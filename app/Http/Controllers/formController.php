@@ -59,6 +59,18 @@ class formController extends Controller
     $input->t_dept=$request->teacher_dept;
     $input->t_salary=$request->teacher_salary;
 
+
+    if ($request->hasFile('teacher_image')) {
+
+      $path = 'uploads/' . date('Y/m/d') . '/';
+
+      $imageName = uniqid() . '.webp';
+
+      $request->file('teacher_image')->move($path, $imageName);
+      
+      $input->teacher_image = $path . $imageName;
+  }
+
     $input->save();
 
   }

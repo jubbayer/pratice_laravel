@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
     <title>Teacher Form</title>
   </head>
-  <body style="display: flex; justify-content: center; align-items: center; height: 750px; background-color: #f8f9fa;">
+  <body style="display: flex; justify-content: center; align-items: center; height: 750px; background-color: hsl(207, 82%, 2%);">
 
     <div style="width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 20px; background: #bfc9ca; box-shadow: 5px 8px 15px hsla(131, 82%, 36%, 0.1);">
 
@@ -44,6 +44,11 @@
 
             <label><strong>Salary</strong></label>
             <input type="text" name="teacher_salary" style="width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 15px;" placeholder="Enter Salary">
+
+
+            <label><strong>Image</strong></label>
+
+            <input type="file" name="teacher_image" class="form-control">
 
             <button type="submit" style="width: 100%; padding: 10px; background-color: blue; color: white; border: none; border-radius: 20px;">Submit</button>
         </form>

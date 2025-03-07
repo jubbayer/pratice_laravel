@@ -11,7 +11,7 @@ Route::post('/student-store',[formController::class,'storeStudent'])->name('stud
 
 route::get('/create',[formController::class,'create']);
 Route::get('/showteacher',[formController::class,'storeTeacher']);
-Route::post('/student-store',[formController::class,'storeTeacher'])->name('teacher.store');
+Route::post('/teacher-store',[formController::class,'storeTeacher'])->name('teacher.store');
 
 Route::get('/', function () {
     return view ('welcome');
