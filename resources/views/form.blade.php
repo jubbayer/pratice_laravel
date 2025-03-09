@@ -23,11 +23,10 @@
 
                     <div class="">
 
-                        <form class="row g-3" action="{{ route('student.store') }}" method="post"
-                            enctype="multipart/form-data">
-
+                        <form action="{{ route('student.store') }}" method="POST">
                             @csrf
-
+                        
+                        
                             <label for="">Student Name</label>
                             <input type="text" class="form-control" name="s_name" class="border border-secondary"
                                 placeholder="Enter Student Name" aria-label=" input example">
@@ -35,6 +34,9 @@
 
                             <label for="">Student Class Name</label>
                             <input type="text" class="form-control" name="class_name" placeholder="Enter class Name">
+                            <br>
+                            <label for="">Student ID</label>
+                            <input type="text" class="form-control" name="class_name" placeholder="Enter ID">
                             <br>
 
                             <label for="">Student Email</label>

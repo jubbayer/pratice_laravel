@@ -20,6 +20,7 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Class</th>
+                            <th scope="col">student ID</th>
                             <th scope="col">Email</th>
                             <th scope="col">phone</th>
                         </tr>
@@ -29,6 +30,7 @@
                             <tr>
                                 <th>{{ $student->student_name  }}</th>
                                 <td>{{ $student->student_class  }}</td>
+                                <td>{{ $student->student_id}}</td>
                                 <td>{{ $student->student_email   }}</td>
                                 <td>{{ $student->phone_number   }}</td>
                             </tr>

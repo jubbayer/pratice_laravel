@@ -19,12 +19,14 @@ return new class extends Migration
             $table->string('t_gender');
             $table->text('t_number');
             $table->string('t_dept');
+            $table->text('dept_img');        
             $table->integer('t_salary');
             $table->text('teacher_image');
+            $table->integer('student_id');
             $table->timestamps();
         });
     }
-
+  
     /**
      * Reverse the migrations.
      */
