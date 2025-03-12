@@ -35,9 +35,6 @@
                             <label for="">Student Class Name</label>
                             <input type="text" class="form-control" name="class_name" placeholder="Enter class Name">
                             <br>
-                            <label for="">Student ID</label>
-                            <input type="text" class="form-control" name="class_name" placeholder="Enter ID">
-                            <br>
 
                             <label for="">Student Email</label>
                             <input type="email" class="form-control" name="student_email"

@@ -21,10 +21,11 @@
                             <th class="table-danger" scope="col">Gender</th>
                             <th class="table-danger" scope="col">Student Name</th>
                             <th class="table-warning" scope="col">phone  Number</th>
-                            <th class="table-info" scope="col">Department name</th>
+                         
                             <th class="table-info" scope="col">Department image</th>
                             <th  class="table-danger" scope="col">Salary</th>
                             <th class="table-secondary" scope="col">Teacher image</th>
+                            <th class="table-secondary" scope="col">class name</th>
                             <th class="table-secondary" scope="col">Action</th>
                         </tr>
                     </thead>
@@ -35,15 +36,27 @@
                                 <th>{{$teacher->t_age}}</th>
                                 <th>{{$teacher->t_email}}</th>
                                 <th>{{$teacher->t_gender}}</th>
+                               
                                 <th>{{$teacher->student_name}}</th>
                                 <th>{{$teacher->t_number}}</th>
-                                <td>{{$teacher->t_dept}}</td>
+                             
+
                                 {{-- <td>{{$teacher->dept_img}}</td> --}}
-                                <td><img src="{{ asset('/'.$teacher->dept_img) }}" alt="" width="50px" height="50px" border-radius: 15px; ></td>
+                                <td><img src="{{ asset('/'.$teacher->dept_img) }}" alt="" width="50px" height="50px" style=" border-radius: 15px;" ></td>
+
+
                                 <td>{{$teacher->t_salary}}</td>
-                                <td>{{$teacher->teacher_image}}</td>
+
+
+                                <td><img src="{{ asset('/'.$teacher->teacher_image) }}" alt=""  width="50px" height="50px" style=" border-radius: 15px;" ></td>
+                                {{-- <td>{{$teacher->teacher_image}}</td> --}}
+
+                                <td>{{$teacher->class_name}}</td>
+
+
                                 <td><div class="btn-group">
-                                    <a href="#" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-primary">Edit</a>
+                                    
                                     <a href="{{ route('teacher.delete', $teacher->id) }}" class="btn btn-danger">Delete</a>
 
                                   </div></td>

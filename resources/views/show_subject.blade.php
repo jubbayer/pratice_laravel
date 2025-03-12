@@ -15,22 +15,31 @@
 
         <div class="row">
             <div class="col-md-12">
-                <table class="table">
+                <table  class="table table-dark table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Class</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">phone</th>
+                            <th scope="col">Subject Name</th>
+                            <th scope="col">Favourite Subject </th>
+                            <th scope="col">Subject Code</th>
+                            <th scope="col">Action</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($students as $student)
+                        @foreach ($subjects as $subject)
                             <tr>
-                                <th>{{ $student->student_name  }}</th>
-                                <td>{{ $student->student_class  }}</td>
-                                <td>{{ $student->student_email   }}</td>
-                                <td>{{ $student->phone_number   }}</td>
+                                <th>{{ $subject->subject_name  }}</th>
+                                <td>{{ $subject->favourite_subject  }}</td>
+                                <td>{{ $subject->subject_code  }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                    <a href="{{ route('subject.edit',$subject->id) }}" class="btn btn-primary active">Edit</a>
+                                  
+                                    <a href="{{ route('subject.delete',$subject->id) }}" class="btn btn-danger">Delete</a>
+
+                                  </div>
+                                </td>
+                               
                             </tr>
                         @endforeach
 
