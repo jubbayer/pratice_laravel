@@ -7,7 +7,7 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use SplSubject;
+
 
 class formController extends Controller
 {
@@ -39,8 +39,8 @@ class formController extends Controller
   public function create()
   {
     $students = Student::all();
-
-    return view('create_teacher', compact('students'));
+    $subjects = Subject::all();
+    return view('create_teacher', compact('students', 'subjects'));
   }
   public function storeTeacher(Request $request)
   {
@@ -53,6 +53,7 @@ class formController extends Controller
     $input->t_dept = $request->teacher_dept;
     $input->t_salary = $request->teacher_salary;
     $input->student_id = $request->student_id;
+    $input->subject_id = $request->subject_name;
 
     if ($request->hasFile('dept_image')) {
       $path = 'uploads/' . date('Y/m/d') . '/';
@@ -68,11 +69,10 @@ class formController extends Controller
       $input->teacher_image = $path . $imageName;
     }
 
-
-
     $input->save();
     return redirect()->route('teacher.show');
   }
+
 
 
   //teacher table leftjoin by students table 
@@ -86,15 +86,11 @@ class formController extends Controller
     return view('show_teacher', compact('teachers', 'students'));
   }
 
-
-
   // eDIT Teacher
   public function teacherEdit($id)
   {
 
     $single_teacher = Teacher::find($id);
-
-
     $students = Student::all();
 
     return view('edit_teacher', compact('single_teacher', 'students'));
@@ -131,29 +127,38 @@ class formController extends Controller
     return redirect()->route('teacher.show');
   }
 
-
   // teacher delete
   public function teacherDelete($id)
   {
-
-    // Find the teacher by ID and delete
-    $teacher = Teacher::findOrFail($id); // Ensures teacher exists, otherwise throws 404
+    $teacher = Teacher::findOrFail($id);
     $teacher->delete();
 
-    // Redirect with a success message
     return redirect()->route('teacher.show')->with('success', 'Teacher deleted successfully.');
   }
 
+
+  // 
   public function createSubject()
   {
+     $subjects = Subject::all();
     return view('create_subject');
   }
   // show subject table 
   public function showSubject()
   {
+    $teachers = DB::table('teachers')
+    ->select('teachers.*', 'subjects.subject_name')
+      ->leftJoin('subjects', 'teachers.subject_id', '=', 'subjects.id')
+  
+      ->get();
+
     $subjects = Subject::all();
-    return view('show_subject', compact('subjects'));
+
+    return view('show_subject', compact('teachers', 'subjects'));
   }
+
+
+
 
   public function storeSubject(Request $request)
   {
@@ -182,9 +187,6 @@ class formController extends Controller
   {
 
     $input = Subject::where('id', $request->subject_id)->first();
-
-
-
     $input->subject_name = $request->sub_name;
     $input->favourite_subject = $request->favourite_sub;
     $input->subject_code = $request->sub_code;

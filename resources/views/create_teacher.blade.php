@@ -8,16 +8,30 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Teacher Form</title>
 </head>
+<style>
+    body {
+        display: flex;
+        margin: 100px 0px 100px 0px;
+        justify-content: center;
+        align-items: center;
+        height: 850px;
+        background-color: hsl(207, 82%, 2%);
+    }
 
-<body
-    style="display: flex; justify-content: center; align-items: center; height: 850px; background-color: hsl(207, 82%, 2%);">
+    .form {
+        width: 700px;
+        height: 1050px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        background: #bfc9ca;
+        box-shadow: 5px 8px 15px hsla(131, 82%, 36%, 0.1);
+    }
+</style>
 
-    <div
-        style="width: 700px;  height: 900px; padding: 20px; border: 1px solid #ddd; border-radius: 20px; background: #bfc9ca; box-shadow: 5px 8px 15px hsla(131, 82%, 36%, 0.1);">
-
+<body>
+    <div class="form">
         <h4 style="text-align: center; color: blue;">Teacher Form</h4>
-
-
         <form action="{{ route('teacher.store') }}" method="post" enctype="multipart/form-data">
 
             @csrf
@@ -44,12 +58,28 @@
                 <option value="female">Female</option>
                 <option value="custom">Custom</option>
             </select>
-
+               <label for=""><strong>Status</strong></label>
+            <select class="form-select" name="status_teacher" >
+                <option selected>Status</option>
+                <option value="1">Active</option>
+                <option value="2">Active status off</option>
+                
+              </select>
             <label><strong>Phone Number</strong></label>
             <input type="text" name="teacher_number"
                 style="width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 15px;"
                 placeholder="Enter Phone Number">
-                <label><strong>Department Name</strong></label>
+
+                <label for="subject_id"><strong> Subject Name</strong></label>
+                <select name="subject_name" class="form-control">
+                    @foreach ($subjects as $subject)
+                        <option value="{{ $subject->id }}">{{ $subject->subject_name}}</option>
+                    @endforeach
+                </select>
+                
+            <br>
+
+            <label><strong>Department Name</strong></label>
             <input type="text" name="teacher_dept"
                 style="width: 100%; padding: 5px; margin-bottom: 0px; border: 1px solid #ccc; border-radius: 15px;"
                 placeholder="Enter Department Name">
@@ -63,11 +93,11 @@
                 @endforeach
             </select>
             <br>
-            
+
             <label for=""><strong> Student class Name</strong></label>
             <select name="student_class_name" class="form-control">
                 @foreach ($students as $student)
-                    <option value="{{ $student->id }}">{{ $student->student_class_name }}</option>
+                    <option value="{{ $student->id }}">{{ $student->student_class }}</option>
                 @endforeach
             </select>
 
@@ -93,10 +123,7 @@
             <button type="submit"
                 style="width: 100%; padding: 10px; background-color: blue; color: white; border: none; border-radius: 20px;">Submit</button>
         </form>
-        <br>
-        <p style="margin-left:50px;"><strong>Please help us by providing us with<p
-                    style="color: hsl(350, 89%, 46%); margin-left:70px;"><strong>your correct information.</strong></p>
-                </strong></p>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

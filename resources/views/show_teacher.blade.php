@@ -12,33 +12,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <table class="table" >
+                <table class="table table-dark table-striped" >
                     <thead>
                         <tr>
-                            <th class="table-primary" scope="col">Teacher Name</th>
-                            <th class="table-secondary" scope="col">Age</th>
-                            <th class="table-success" scope="col">Email</th>
-                            <th class="table-danger" scope="col">Gender</th>
-                            <th class="table-danger" scope="col">Student Name</th>
-                            <th class="table-warning" scope="col">phone  Number</th>
-                         
-                            <th class="table-info" scope="col">Department image</th>
-                            <th  class="table-danger" scope="col">Salary</th>
-                            <th class="table-secondary" scope="col">Teacher image</th>
-                            <th class="table-secondary" scope="col">class name</th>
-                            <th class="table-secondary" scope="col">Action</th>
+                            <th  scope="col">Teacher Name</th>
+                            <th  scope="col">Age</th>
+                            <th  scope="col">Email</th>
+                            <th  scope="col">Gender</th>
+                            <th  scope="col">Subject Name</th>
+                            <th  scope="col">Student Name</th>
+                            <th  scope="col">phone  Number</th>
+                    
+                            <th  scope="col">Department image</th>                       
+                            <th  scope="col">Salary</th>
+                            <th  scope="col">Teacher image</th>
+                            <th  scope="col">class name</th>
+                            <th  scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($teachers as $teacher)
-                            <tr  class="table-success">
+                            <tr  >
                                 <th>{{$teacher->teacher_name}}</th>
                                 <th>{{$teacher->t_age}}</th>
                                 <th>{{$teacher->t_email}}</th>
                                 <th>{{$teacher->t_gender}}</th>
-                               
+                                <td>{{$teacher->subject_id }}</td>
                                 <th>{{$teacher->student_name}}</th>
                                 <th>{{$teacher->t_number}}</th>
+                                
+                                
+                            
                              
 
                                 {{-- <td>{{$teacher->dept_img}}</td> --}}
